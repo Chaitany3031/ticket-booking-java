@@ -12,9 +12,10 @@ public class UserBookingService {
  private List<User> userList;
  private ObjectMapper objectMapper = new ObjectMapper();
  private static final String USERS_PATH = "../localDB/users.json";
- public UserBookingService (User user){
+ public UserBookingService (User user) throws IOException{
     this.user = user;
     File file = new File(USERS_PATH);
+    userList = objectMapper.readValue(file, new TypeReference<List<User>>() {});
  }
 }
 
